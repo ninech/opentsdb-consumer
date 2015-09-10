@@ -8,11 +8,10 @@ end
 
 SimpleCov.configure do
   clean_filters
-  load_adapter 'test_frameworks'
+  load_profile 'root_filter'
 end
 
-ENV["COVERAGE"] && SimpleCov.start do
-  add_filter "/.rvm/"
+ENV['COVERAGE'] && SimpleCov.start do
 end
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
@@ -22,7 +21,7 @@ require 'opentsdb-consumer'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
 
