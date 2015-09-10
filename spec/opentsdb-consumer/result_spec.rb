@@ -7,12 +7,12 @@ RSpec.describe OpenTSDBConsumer::Result do
       result = described_class.new 'metric' => 'my.metric',
                                    'tags' => {},
                                    'aggregateTags' => [],
-                                   'dps' => [{ '1': 2 }]
+                                   'dps' => [{ '1' => 2 }]
 
       expect(result.metric_name).to eq 'my.metric'
       expect(result.tags).to eq({})
       expect(result.aggregate_tags).to eq []
-      expect(result.datapoints).to eq [{ '1': 2 }]
+      expect(result.datapoints).to eq [{ '1' => 2 }]
     end
   end
 
