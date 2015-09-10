@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'pathname'
+
+APP_ROOT = File.join(File.dirname(Pathname.new(__FILE__).realpath), '..')
+
+$LOAD_PATH.unshift File.join(APP_ROOT, 'lib')
+
+require 'bundler/setup'
+require 'pry'
+require 'opentsdb-consumer'
+
+if ARGV.empty?
+  puts 'Usage: bin/opentsdb-consumer <hostname> <metric>'
+  exit 0
+end
+
+client = OpenTSDBConsumer::Client.new host: ARGV[0]
+metric = OpenTSDBConsumer::Metric.new name: ARGV[1]
+query  = OpenTSDBConsumer::Query.new metric, client
+
+binding.pry
