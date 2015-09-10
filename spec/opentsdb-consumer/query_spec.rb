@@ -26,7 +26,7 @@ RSpec.describe OpenTSDBConsumer::Query do
 
       it 'returns the parsed body' do
         expect(client).to receive(:get).and_return(mock_response)
-        expect(query.run).to be_a Hash
+        expect(query.run).to be_a OpenTSDBConsumer::Result
       end
     end
 

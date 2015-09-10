@@ -12,7 +12,7 @@ module OpenTSDBConsumer
     def run(start: '1h-ago')
       response = client.get query: { m: metric, start: start }
       parsed_body = JSON.parse(response.body)
-      return parsed_body.first if response.status < 400
+      return OpenTSDBConsumer::Result.build(parsed_body) if response.status < 400
 
       fail QueryError, parsed_body['error']['message']
     end
