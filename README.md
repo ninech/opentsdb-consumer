@@ -1,4 +1,4 @@
-opentsdb-consumer
+opentsdb-consumer [![Build Status](https://travis-ci.org/ninech/opentsdb-consumer.svg)](https://travis-ci.org/ninech/opentsdb-consumer)
 =================
 
 Client library to fetch metrics from OpenTSDB.
