@@ -1,7 +1,19 @@
-opentsdb-consumer [![Build Status](https://travis-ci.org/ninech/opentsdb-consumer.svg)](https://travis-ci.org/ninech/opentsdb-consumer) [![Coverage Status](https://coveralls.io/repos/ninech/opentsdb-consumer/badge.svg?branch=master&service=github)](https://coveralls.io/github/ninech/opentsdb-consumer?branch=master)
+opentsdb-consumer
 =================
 
+[![Build Status](https://travis-ci.org/ninech/opentsdb-consumer.svg)](https://travis-ci.org/ninech/opentsdb-consumer)
+[![Coverage Status](https://coveralls.io/repos/ninech/opentsdb-consumer/badge.svg?branch=master&service=github)](https://coveralls.io/github/ninech/opentsdb-consumer?branch=master)
+[![Code Climate](https://codeclimate.com/github/ninech/opentsdb-consumer/badges/gpa.svg)](https://codeclimate.com/github/ninech/opentsdb-consumer)
+
 Client library to fetch metrics from OpenTSDB.
+
+## Installation
+
+Add it to your Gemfile:
+
+```ruby
+gem 'opentsdb-consumer'
+```
 
 ## Usage
 
