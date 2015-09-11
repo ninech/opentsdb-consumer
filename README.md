@@ -1,4 +1,4 @@
-opentsdb-consumer [![Build Status](https://travis-ci.org/ninech/opentsdb-consumer.svg)](https://travis-ci.org/ninech/opentsdb-consumer)
+opentsdb-consumer [![Build Status](https://travis-ci.org/ninech/opentsdb-consumer.svg)](https://travis-ci.org/ninech/opentsdb-consumer) [![Coverage Status](https://coveralls.io/repos/ninech/opentsdb-consumer/badge.svg?branch=master&service=github)](https://coveralls.io/github/ninech/opentsdb-consumer?branch=master)
 =================
 
 Client library to fetch metrics from OpenTSDB.

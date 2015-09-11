@@ -1,23 +1,12 @@
-require 'simplecov'
 
-module SimpleCov::Configuration
-  def clean_filters
-    @filters = []
-  end
-end
-
-SimpleCov.configure do
-  clean_filters
-  load_profile 'root_filter'
-end
-
-ENV['COVERAGE'] && SimpleCov.start do
-end
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
 require 'rspec'
 require 'opentsdb-consumer'
+
+require 'coveralls'
+Coveralls.wear!
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
