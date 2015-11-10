@@ -36,8 +36,19 @@ RSpec.describe OpenTSDBConsumer::Query do
         %({"error":{"code":400,"message":"No such name for 'metrics': '#{metric.name}'"}})
       end
 
-      it 'raises an error' do
-        expect { query.run }.to raise_exception OpenTSDBConsumer::QueryError
+      it 'raises the appropriate error' do
+        expect { query.run }.to raise_exception OpenTSDBConsumer::InvalidMetric
+      end
+    end
+
+    context 'invalid tag' do
+      let(:status) { 400 }
+      let(:response_body) do
+        %({"error":{"code":400,"message":"No such name for 'tagv': 'pony-01'"}})
+      end
+
+      it 'raises the appropriate error' do
+        expect { query.run }.to raise_exception OpenTSDBConsumer::InvalidTag
       end
     end
   end
