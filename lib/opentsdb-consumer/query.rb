@@ -2,15 +2,15 @@ require 'json'
 
 module OpenTSDBConsumer
   class Query
-    attr_accessor :metric, :client
+    attr_accessor :metrics, :client
 
-    def initialize(metric, client)
-      @metric = metric
+    def initialize(metrics, client)
+      @metrics = [metrics].flatten
       @client = client
     end
 
     def run(start: '1h-ago')
-      response = client.get query: { m: metric, start: start }
+      response = client.post body: request_body(start)
       parsed_body = JSON.parse(response.body)
       return OpenTSDBConsumer::Result.build(parsed_body) if response.status < 400
 
@@ -19,6 +19,10 @@ module OpenTSDBConsumer
     end
 
     private
+
+    def request_body(start)
+      { start: start, queries: metrics.map(&:to_h) }.to_json
+    end
 
     def error_for_response(response_message)
       case response_message

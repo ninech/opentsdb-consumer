@@ -20,7 +20,7 @@ gem 'opentsdb-consumer'
 ```ruby
 client = OpenTSDBConsumer::Client.new host: 'metrics.yourdomain.com', port: 4242
 metric = OpenTSDBConsumer::Metric.new name: 'my.metric', rate: true, aggregator: 'avg'
-OpenTSDBConsumer::Query.new(metric, client).run start: '24h-ago'
+OpenTSDBConsumer::Query.new([metric], client).run start: '24h-ago'
 ```
 
 ## Contributing to opentsdb-consumer
