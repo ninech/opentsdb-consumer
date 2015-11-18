@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Philippe H\u{e4}ssig"]
-  s.date = "2015-11-10"
+  s.date = "2015-11-18"
   s.description = "Client library to consume metrics from OpenTSDB"
   s.email = "phil@nine.ch"
   s.executables = ["opentsdb-consumer"]
