@@ -55,4 +55,15 @@ RSpec.describe OpenTSDBConsumer::Query do
       end
     end
   end
+
+  describe '#latest_value' do
+    let(:response_body) do
+      %([{"metric":"yolo","tags":{"node":"n1"},"dps":{"1448965805":1.95,"1448965864":2.21}}])
+    end
+
+    it 'returns the latest value in the series' do
+      expect(client).to receive(:post).and_return(mock_response)
+      expect(query.latest_value).to eq(2.21)
+    end
+  end
 end

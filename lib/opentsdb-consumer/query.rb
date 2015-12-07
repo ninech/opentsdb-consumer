@@ -18,6 +18,11 @@ module OpenTSDBConsumer
       fail error_for_response(response_message), response_message
     end
 
+    def latest_value(start: '1m-ago')
+      result = run(start: start)
+      result.latest_value if result
+    end
+
     private
 
     def request_body(start)
