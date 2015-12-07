@@ -30,4 +30,16 @@ RSpec.describe OpenTSDBConsumer::Result do
       expect(results.last).to be_a OpenTSDBConsumer::Result
     end
   end
+
+  describe '#latest_value' do
+    it 'returns to newest value in the series' do
+      result = OpenTSDBConsumer::Result.new 'dps' => { '111' => 1, '333' => 3, '222' => 2 }
+      expect(result.latest_value).to eq(3)
+    end
+
+    it 'returns nil when no datapoints are found' do
+      result = OpenTSDBConsumer::Result.new 'dps' => {}
+      expect(result.latest_value).to be_nil
+    end
+  end
 end

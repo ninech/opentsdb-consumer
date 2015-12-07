@@ -13,5 +13,10 @@ module OpenTSDBConsumer
       results = response.map { |h| new(h) }
       results.length > 1 ? results : results.first
     end
+
+    def latest_value
+      datapoint = datapoints.max_by { |timestamp, _| timestamp }
+      datapoint.last if datapoint
+    end
   end
 end
