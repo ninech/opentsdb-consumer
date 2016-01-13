@@ -11,7 +11,14 @@ module OpenTSDBConsumer
 
     def self.build(response)
       results = response.map { |h| new(h) }
-      results.length > 1 ? results : results.first
+      case results.length
+      when 0
+        new('dps' => [])
+      when 1
+        results.first
+      else
+        results
+      end
     end
 
     def latest_value

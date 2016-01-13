@@ -29,6 +29,14 @@ RSpec.describe OpenTSDBConsumer::Result do
       expect(results.first).to be_a OpenTSDBConsumer::Result
       expect(results.last).to be_a OpenTSDBConsumer::Result
     end
+
+    it 'returns an empty result object when there is no data' do
+      response = []
+      result = described_class.build(response)
+      expect(result).to be_a OpenTSDBConsumer::Result
+      expect(result.datapoints).to be_an Array
+      expect(result.datapoints).to be_empty
+    end
   end
 
   describe '#latest_value' do
