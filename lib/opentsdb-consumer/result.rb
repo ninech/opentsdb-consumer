@@ -25,5 +25,9 @@ module OpenTSDBConsumer
       datapoint = datapoints.max_by { |timestamp, _| timestamp }
       datapoint.last if datapoint
     end
+
+    def empty?
+      datapoints.nil? || datapoints.empty?
+    end
   end
 end

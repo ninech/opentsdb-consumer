@@ -50,4 +50,21 @@ RSpec.describe OpenTSDBConsumer::Result do
       expect(result.latest_value).to be_nil
     end
   end
+
+  describe '#empty?' do
+    it 'returns false when there is data' do
+      result = described_class.new 'dps' => [{}]
+      expect(result).to_not be_empty
+    end
+
+    it 'returns true when there is no data' do
+      result = described_class.new 'dps' => []
+      expect(result).to be_empty
+    end
+
+    it 'returns true when the datapoints are nil' do
+      result = described_class.new 'dps' => nil
+      expect(result).to be_empty
+    end
+  end
 end
