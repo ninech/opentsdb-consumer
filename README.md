@@ -23,6 +23,14 @@ metric = OpenTSDBConsumer::Metric.new name: 'my.metric', rate: true, aggregator:
 OpenTSDBConsumer::Query.new([metric], client).run start: '24h-ago'
 ```
 
+The rate can be configured by providing an hash with the rate options.
+```ruby
+metric = OpenTSDBConsumer::Metric.new name: 'my.metric',
+                                      rate: { counter: true, counterMax: 65535, resetValue: 2000 },
+                                      aggregator: 'sum'
+```
+
+
 ## Contributing to opentsdb-consumer
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
