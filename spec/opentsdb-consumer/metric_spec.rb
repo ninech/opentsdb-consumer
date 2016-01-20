@@ -1,14 +1,20 @@
 require 'spec_helper'
 require 'opentsdb-consumer/metric'
+require 'opentsdb-consumer/rate'
 
 RSpec.describe OpenTSDBConsumer::Metric do
   let(:name) { 'my.metric' }
   let(:aggregator) { 'avg' }
   let(:rate) { false }
   let(:tags) { {} }
+  let(:rate) { false }
   let(:downsample) { '1h-avg' }
   let(:metric) do
-    described_class.new name: name, aggregator: aggregator, rate: rate, tags: tags, downsample: downsample
+    described_class.new name: name,
+                        aggregator: aggregator,
+                        rate: rate,
+                        tags: tags,
+                        downsample: downsample
   end
 
   describe '#to_s' do
@@ -24,14 +30,34 @@ RSpec.describe OpenTSDBConsumer::Metric do
     end
 
     context 'with rate' do
-      let(:rate) { true }
-      it { should eq 'avg:1h-avg:rate:my.metric' }
+      let(:rate) { { counter: true } }
+      it { should eq 'avg:1h-avg:my.metric:rate:rateOptions{counter=true}' }
     end
   end
 
   describe '#to_h' do
     subject { metric.to_h }
 
-    it { should eq(aggregator: aggregator, downsample: downsample, metric: name, rate: rate, tags: tags) }
+    it do
+      should eq(aggregator: aggregator,
+                downsample: downsample,
+                metric: name,
+                tags: tags)
+    end
+
+    context 'with rate options' do
+      let(:rate) { { counter: true } }
+
+      it do
+        should eq(aggregator: aggregator,
+                  downsample: downsample,
+                  metric: name,
+                  rate: true,
+                  rateOptions: {
+                    counter: true
+                  },
+                  tags: tags)
+      end
+    end
   end
 end

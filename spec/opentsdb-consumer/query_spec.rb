@@ -8,7 +8,7 @@ RSpec.describe OpenTSDBConsumer::Query do
   let(:response_body) { '[{}]' }
   let(:mock_response) { instance_double 'Excon::Response', status: status, body: response_body }
   let(:expected_query) do
-    { aggregator: 'sum', downsample: '10m-avg', metric: 'my.metric', rate: false, tags: {} }
+    { aggregator: 'sum', downsample: '10m-avg', metric: 'my.metric', tags: {} }
   end
 
   describe '#run' do
