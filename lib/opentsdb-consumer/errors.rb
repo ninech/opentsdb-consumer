@@ -3,4 +3,5 @@ module OpenTSDBConsumer
 
   class InvalidMetric < QueryError; end
   class InvalidTag < QueryError; end
+  class EmptyTag < InvalidTag; end
 end

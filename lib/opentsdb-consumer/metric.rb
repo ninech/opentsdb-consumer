@@ -9,11 +9,11 @@ module OpenTSDBConsumer
       @aggregator = aggregator
       @rate = Rate.new(rate) if rate
       @downsample = downsample
-      @tags = tags
+      @tags = Tags.new(tags)
     end
 
     def to_s
-      query = tags.any? ? "{#{tags_to_query}}" : ''
+      query = tags.any? ? "{#{tags}}" : ''
       query += ":#{rate}" if rate
       [aggregator, downsample, name].compact.join(':') + query
     end
@@ -23,16 +23,10 @@ module OpenTSDBConsumer
         aggregator: aggregator,
         downsample: downsample,
         metric: name,
-        tags: tags,
+        tags: tags.to_h,
       }
       hash.merge! rate.to_h if rate
       hash
-    end
-
-    private
-
-    def tags_to_query
-      tags.map { |key, value| [key, value].join '=' }.join(',')
     end
   end
 end
