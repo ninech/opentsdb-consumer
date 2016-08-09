@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'opentsdb-consumer/client'
 
 RSpec.describe OpenTSDBConsumer::Client do
   let(:client) { described_class.new host: 'metrics.local', port: '4243' }

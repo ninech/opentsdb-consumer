@@ -30,7 +30,6 @@ metric = OpenTSDBConsumer::Metric.new name: 'my.metric',
                                       aggregator: 'sum'
 ```
 
-
 ## Contributing to opentsdb-consumer
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
@@ -51,4 +50,3 @@ bin/opentsdb-consumer server.domain.com my.metric
 
 Copyright (c) 2015 Nine Internet Solutions AG. See LICENSE.txt for
 further details.
-

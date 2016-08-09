@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'opentsdb-consumer/result'
 
 RSpec.describe OpenTSDBConsumer::Result do
   describe '.initialize' do

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'opentsdb-consumer/tags'
 
 RSpec.describe OpenTSDBConsumer::Tags do
   let(:tags) { { key: 'value' } }
