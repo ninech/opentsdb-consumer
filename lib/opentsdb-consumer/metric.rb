@@ -2,7 +2,7 @@ require 'opentsdb-consumer/rate'
 
 module OpenTSDBConsumer
   class Metric
-    ATTRIBUTES_WHITELIST = %i(tags aggregator downsample rate).freeze
+    ATTRIBUTES_WHITELIST = %i(aggregator rate downsample tags).freeze
 
     attr_reader :name, :aggregator, :rate, :downsample, :tags
 
@@ -27,7 +27,7 @@ module OpenTSDBConsumer
         metric: name,
         tags: tags.to_h,
       }
-      
+
       hash.merge! rate.to_h if rate
 
       hash
