@@ -18,9 +18,24 @@ gem 'opentsdb-consumer'
 ## Usage
 
 ```ruby
+# First, you need a client.
 client = OpenTSDBConsumer::Client.new host: 'metrics.yourdomain.com', port: 4242
-metric = OpenTSDBConsumer::Metric.new name: 'my.metric', rate: true, aggregator: 'avg'
-OpenTSDBConsumer::Query.new([metric], client).run start: '24h-ago'
+
+# Default options
+data = client.fetch(%w(metric1 metric2))
+
+# Custom options for all the metrics
+data = client.fetch(
+  %w(metric1 metric2),
+  rate: true,
+  aggregator: 'avg',
+  tags: { environment: 'production' },
+  start: '24h-ago'
+)
+
+# Custom options for each metric
+metric = OpenTSDBConsumer::Metric.new name: 'my.metric', rate: true, aggregator: 'avg', tags: { environment: 'production' }
+data   = OpenTSDBConsumer::Query.new([metric], client).run start: '24h-ago'
 ```
 
 The rate can be configured by providing an hash with the rate options.
@@ -29,7 +44,6 @@ metric = OpenTSDBConsumer::Metric.new name: 'my.metric',
                                       rate: { counter: true, counterMax: 65535, resetValue: 2000 },
                                       aggregator: 'sum'
 ```
-
 
 ## Contributing to opentsdb-consumer
 
@@ -49,6 +63,5 @@ bin/opentsdb-consumer server.domain.com my.metric
 
 ## Copyright
 
-Copyright (c) 2015 Nine Internet Solutions AG. See LICENSE.txt for
+Copyright (c) 2016 Nine Internet Solutions AG. See LICENSE.txt for
 further details.
-

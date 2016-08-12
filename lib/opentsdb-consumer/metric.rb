@@ -2,14 +2,16 @@ require 'opentsdb-consumer/rate'
 
 module OpenTSDBConsumer
   class Metric
+    ATTRIBUTES_WHITELIST = %i(aggregator rate downsample tags).freeze
+
     attr_reader :name, :aggregator, :rate, :downsample, :tags
 
     def initialize(name: nil, aggregator: 'sum', rate: false, downsample: '10m-avg', tags: {})
-      @name = name
+      @name       = name
       @aggregator = aggregator
-      @rate = Rate.new(rate) if rate
+      @rate       = Rate.new(rate) if rate
       @downsample = downsample
-      @tags = Tags.new(tags)
+      @tags       = Tags.new(tags)
     end
 
     def to_s
@@ -25,7 +27,9 @@ module OpenTSDBConsumer
         metric: name,
         tags: tags.to_h,
       }
+
       hash.merge! rate.to_h if rate
+
       hash
     end
   end

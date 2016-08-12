@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'opentsdb-consumer/rate'
 
 RSpec.describe OpenTSDBConsumer::Rate do
   describe '#to_s' do

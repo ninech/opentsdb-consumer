@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'opentsdb-consumer/metric'
-require 'opentsdb-consumer/rate'
 
 RSpec.describe OpenTSDBConsumer::Metric do
   let(:name) { 'my.metric' }
