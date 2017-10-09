@@ -61,7 +61,8 @@ To test and debug you can use the debug script:
 bin/opentsdb-consumer server.domain.com my.metric
 ```
 
-## Copyright
+## About
 
-Copyright (c) 2016 Nine Internet Solutions AG. See LICENSE.txt for
-further details.
+This gem is currently maintained and funded by [nine](https://nine.ch).
+
+[![logo of the company 'nine'](https://logo.apps.at-nine.ch/Dmqied_eSaoBMQwk3vVgn4UIgDo=/trim/500x0/logo_claim.png)](https://www.nine.ch)
